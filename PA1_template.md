@@ -1,9 +1,4 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
+# Reproducible Research: Peer Assessment 1
 
 
 ## Loading and preprocessing the data
@@ -13,8 +8,43 @@ First, load up the libraries.
 
 ```r
 require("dplyr")      # For some table operations.
+```
+
+```
+## Loading required package: dplyr
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 require("ggplot2")    # for ggplots preferred.
+```
+
+```
+## Loading required package: ggplot2
+```
+
+```r
 require("scales")
+```
+
+```
+## Loading required package: scales
 ```
 
 Now, begin by unzipping the activity.zip file and optionally overwriting output.
@@ -78,12 +108,12 @@ steps_day_df <- tbl_df(aggregate(steps~date,activity_df, sum, na.rm = TRUE))
 hist(steps_day_df$steps, xlab = "Total Steps / Day", main = "Histogram of Steps per Day")
 ```
 
-![plot of chunk hist_fig](figure/hist_fig-1.png)
+![](PA1_template_files/figure-html/hist_fig-1.png)<!-- -->
 
 We see that most days are between 10-15k steps per day.
 
 * Calculate the Mean and median total number of steps taken per day.
-    1. **MEAN** = 1.0766189 &times; 10<sup>4</sup>
+    1. **MEAN** = 1.0766189\times 10^{4}
     2. **MEDIAN** = 10765
 
 Cache these values.
@@ -126,7 +156,7 @@ ggp + geom_line() + scale_x_datetime(labels = date_format("%H:00")) +
   labs(x="Time of the Day", y="Average Steps")
 ```
 
-![plot of chunk interval_plot](figure/interval_plot-1.png)
+![](PA1_template_files/figure-html/interval_plot-1.png)<!-- -->
 
 
 * Which 5-minute interval on average across all days in the dataset contains the maximum number of steps.
@@ -140,7 +170,7 @@ steps_time_df[max_index,1:2]
 ```
 
 ```
-## # A tibble: 1 × 2
+## # A tibble: 1 Ã— 2
 ##    time    steps
 ##   <chr>    <dbl>
 ## 1 08:35 206.1698
@@ -217,13 +247,13 @@ hist(est_steps_day_df$steps, xlab = "Total Steps / Day",
      main = "Histogram of Steps per Day (with no NAs)")
 ```
 
-![plot of chunk hist_fig2](figure/hist_fig2-1.png)
+![](PA1_template_files/figure-html/hist_fig2-1.png)<!-- -->
 
 We see that most days are still between 10-15k steps per day.
 
 * Calculate the Mean and median total number of steps taken per day.
-    1. **MEAN** = 1.0766189 &times; 10<sup>4</sup>
-    2. **MEDIAN** = 1.0766189 &times; 10<sup>4</sup>
+    1. **MEAN** = 1.0766189\times 10^{4}
+    2. **MEDIAN** = 1.0766189\times 10^{4}
 
 Cache these values.
 
@@ -297,6 +327,6 @@ ggp + geom_line() + facet_grid(weekday~.) +
   labs(x="Time of the Day", y="Average Steps")
 ```
 
-![plot of chunk Wkd_plots](figure/Wkd_plots-1.png)
+![](PA1_template_files/figure-html/Wkd_plots-1.png)<!-- -->
 
 
